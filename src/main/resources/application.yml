@@ -1,0 +1,29 @@
+server:
+  port: 9002
+  tomcat:
+    accept-count: 1000
+    threads:
+      max: 2000
+      min-spare: 100
+    connection-timeout: 30000
+spring:
+  thymeleaf:
+    cache: false # 关闭页面缓存
+    encoding: UTF-8 # 模板编码
+    prefix: classpath:/templates/  # 页面映射路径
+    suffix: .html # 试图后的后缀
+    mode: HTML5 # 模板模式
+  servlet:
+    multipart:
+      max-file-size: 100MB
+      max-request-size: 1000MB
+netty:
+  port: 9877
+#mq
+rocketmq:
+  producer:
+    groupName: SYSCTLSERVERGROUPNAME
+    namesrvAddr: 218.2.99.139:16176
+    instanceName: SYSCTLSERVERGROUPNAME
+    maxMessageSize: 131072
+    sendMsgTimeout: 2000

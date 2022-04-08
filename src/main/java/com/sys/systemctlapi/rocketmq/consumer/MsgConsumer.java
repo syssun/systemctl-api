@@ -20,7 +20,7 @@ public class MsgConsumer {
     private String SERVER_ADDR;
     @PostConstruct
     public  void init() throws MQClientException {
-        DefaultMQPushConsumer consumer = new DefaultMQPushConsumer("CAR_CONSUMERCC");
+        DefaultMQPushConsumer consumer = new DefaultMQPushConsumer("SYSCTL_CONSUMERCCD");
         consumer.setNamesrvAddr(SERVER_ADDR);
         //消费策略，从哪里开始消费
         consumer.setConsumeFromWhere(ConsumeFromWhere.CONSUME_FROM_LAST_OFFSET);

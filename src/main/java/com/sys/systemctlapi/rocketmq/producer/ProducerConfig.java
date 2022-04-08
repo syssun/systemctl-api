@@ -5,12 +5,13 @@ import org.apache.rocketmq.client.producer.DefaultMQProducer;
 import org.apache.rocketmq.common.MixAll;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Component;
 
 /**
  * 消息生产者
  */
-@Component
+@Configuration
 @Slf4j
 public class ProducerConfig {
     @Value("${rocketmq.producer.groupName}")
@@ -36,7 +37,6 @@ public class ProducerConfig {
         producer.setMaxMessageSize(maxMessageSize);
         producer.setSendMsgTimeout(sendMsgTimeout);
         producer.setVipChannelEnabled(false);
-        producer.setCreateTopicKey(MixAll.AUTO_CREATE_TOPIC_KEY_TOPIC);
         log.info("================>生产者创建完成，ProducerGroupName :{}<================", groupName);
         return producer;
     }

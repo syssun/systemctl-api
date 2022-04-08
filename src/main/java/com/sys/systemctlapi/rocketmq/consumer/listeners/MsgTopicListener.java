@@ -17,23 +17,13 @@ public class MsgTopicListener implements MessageListenerOrderly {
         log.info("mq开始处理car的数据");
         try {
             for (MessageExt m : list) {
-                String topic = m.getTopic();
-                delMsg(m);
+                String msg = new String(m.getBody(), StandardCharsets.UTF_8);
+                log.info("car的数据 m:{}", msg);
             }
         } catch (Exception e) {
             log.error("消息发送失败：", e);
         }
         return ConsumeOrderlyStatus.SUCCESS;
-    }
-
-    //接收消息，发送数据
-    public void delMsg(MessageExt m) {
-        try {
-            String msg = new String(m.getBody(), StandardCharsets.UTF_8);
-            log.info("car的数据 m:{}", msg);
-        } catch (Exception e) {
-            log.error("car发送异常", e);
-        }
     }
 
 }

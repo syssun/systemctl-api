@@ -17,13 +17,11 @@ spring:
     multipart:
       max-file-size: 100MB
       max-request-size: 1000MB
-netty:
-  port: 9877
-#mq
+#mq 10.30.30.161:9876
 rocketmq:
   producer:
     groupName: SYSCTLSERVERGROUPNAME
-    namesrvAddr: 218.2.99.139:16176
+    namesrvAddr: 218.2.99.139:16181
     instanceName: SYSCTLSERVERGROUPNAME
     maxMessageSize: 131072
     sendMsgTimeout: 2000

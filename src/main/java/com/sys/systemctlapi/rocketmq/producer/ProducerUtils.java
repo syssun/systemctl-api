@@ -7,20 +7,21 @@ import org.apache.rocketmq.common.message.Message;
 import org.apache.rocketmq.remoting.exception.RemotingException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
-@Service
+import javax.annotation.Resource;
+
+@Configuration
 public class ProducerUtils {
-    @Autowired
-    @Qualifier("myDefaultMQProducer")
+    @Resource(name = "myDefaultMQProducer")
     private DefaultMQProducer defaultMQProducer;
 
     public void send(String tag,String msg){
         Message message = new Message();
         message.setTopic("SYSCTLTOPIC");
         message.setTags(tag);
-        //message.setKeys(String.valueOf(id));
         message.setBody(msg.getBytes());
         try {
             defaultMQProducer.send(message,1000l);

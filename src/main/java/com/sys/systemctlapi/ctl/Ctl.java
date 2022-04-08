@@ -41,6 +41,7 @@ public class Ctl {
     //60s 关机
     @GetMapping("/shutdown")
     public String shutdown() {
+        System.out.println("60s 关机");
         kafkaTemplate.send("shutdownTopic", "open");
         return "1";
     }
@@ -48,6 +49,7 @@ public class Ctl {
     //10min 关机
     @GetMapping("/shutdownten")
     public String shutdownten() {
+        System.out.println("10min 关机");
         kafkaTemplate.send("shutdowntenTopic", "open");
         return "1";
     }
@@ -62,6 +64,7 @@ public class Ctl {
     //取消关机命令
     @GetMapping("/canceshutdow")
     public String canceshutdown() {
+        System.out.println("取消关机命令");
         kafkaTemplate.send("canceshutdowTopic", "open");
         return "1";
     }

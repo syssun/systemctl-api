@@ -17,14 +17,7 @@ public class SystemctlApiApplication {
     @Bean
     public SocketIOServer socketIOServer() {
         com.corundumstudio.socketio.Configuration config = new com.corundumstudio.socketio.Configuration();
-        String os = System.getProperty("os.name");
-        if(os.toLowerCase().contains("win")){   //在本地window环境测试时用localhost
-            System.out.println("this is  windows");
-            config.setHostname("127.0.0.1");
-        } else {
-            config.setHostname("106.54.123.133");   //部署到你的远程服务器正式发布环境时用服务器公网ip
-        }
-        config.setPort(9088);
+        config.setPort(9001);
        // config.setTransports(Transport.POLLING, Transport.WEBSOCKET);
         config.setOrigin(":*:");
         /*config.setAuthorizationListener(new AuthorizationListener() {//类似过滤器
